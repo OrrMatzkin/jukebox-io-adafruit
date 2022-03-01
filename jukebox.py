@@ -1,12 +1,14 @@
 import sys
 from typing import List
+from urllib import request
 import vlc
 import json
+import time
 from Adafruit_IO import MQTTClient, Client, Feed, RequestError
 
 
-ADAFRUIT_IO_KEY = ""
-ADAFRUIT_IO_USERNAME = ""
+ADAFRUIT_IO_KEY = "<YOUR ADAFRUIT IO KEY>"
+ADAFRUIT_IO_USERNAME = "<YOUR ADAFRUIT IO USERNAME>"
 
 class Jukebox:
 
@@ -35,14 +37,13 @@ class Jukebox:
         Returns:
             bool: True if jukebox is playing the song successfully, else False.    
         """
-        print(f"searches for {song_name}")
-        self.current_song = self.songs_by_name[song_name]
+        self.current_song = self.find_best_match(song_name)
         if self.current_song is None:
             print("song not found!")
             return False
         else:    
             print(f"playing {self.current_song['name']}")
-            self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path']))   
+            self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path'])) 
             self.media_player.play()
             return True
 
@@ -52,7 +53,27 @@ class Jukebox:
         print("stoping music")
         self.current_song = None
         self.media_player.stop()
-        
+
+
+    def find_best_match(self, reqest: str) -> List[str]:
+        """Finds the best match of all song.
+
+        Args:
+            reqest (str)): song reqest. 
+
+        Returns:
+            List[str]: returns the best scored matched song, if none found returns None;    
+        """
+        best_score = 0
+        best_match = None
+        reqest_list = [s.lower() for s in reqest.split()]
+        for song in self.songs_by_name.values():
+            num_of_mathces = sum(x == y for x, y in zip(reqest_list, song["mathches"]))
+            score = num_of_mathces / len(song["mathches"])
+            if score > best_score:
+                best_score = score
+                best_match = song
+        return best_match
 
 def io_test():
 
@@ -79,14 +100,17 @@ def io_test():
     
 if __name__ == "__main__":
 
-    # TODO: remove key and user name getters
+    # TODO: remove key and user name getters for final commit
     ADAFRUIT_IO_KEY = sys.argv[1]
-    ADAFRUIT_IO_USERNAME = sys.argv[2]
+    ADAFRUIT_IO_USERNAME = sys.argv[2]    
     
-    # jukebox = Jukebox("songs_data.json")
-   
-    # jukebox.play_video(test_song["filePath"])
-    # time.sleep(5)
-    # jukebox.stop_video()
-    io_test()
+    jukebox = Jukebox("songs_data.json")
+
+    jukebox.play_video("YOu got")
+    time.sleep(5)
+    jukebox.stop_video()
+
+    
+
+    # io_test()
  

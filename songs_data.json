@@ -3,12 +3,14 @@
         "id": 0,
         "name": "Every Breath You Take",
         "artist": "The police",
-        "filePath": "/home/pi/jukebox/songs/The Police - Every Breath You Take.mp4"
+        "path": "/home/pi/jukebox-io-adafruit/songs/The Police - Every Breath You Take.mp4",
+        "mathches": ["every", "breath", "you", "take", "the", "police"]
     }, 
     {
         "id": 1,
         "name": "You Got It",
         "artist": "Roy Orbison",
-        "filePath": "/home/pi/jukebox/songs/Roy Orbison - You Got It.mov"
+        "path": "/home/pi/jukebox-io-adafruit/songs/Roy Orbison - You Got It.mov",
+        "mathches": ["you", "got", "it", "roy", "orbison"]
     }
 ]
