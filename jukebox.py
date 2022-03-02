@@ -127,14 +127,14 @@ class Jukebox:
 
 
     def display_available_songs(self) -> None:
+        """Display all the song the jukebox can play"""
         self.delete_msg(1)
-        print("The availbe songs are:")
-        counter = 1
-        for song in self.songs_by_name.values():
+        print("The available songs are:")
+        for idx, song in enumerate(self.songs_by_name.values()):
             name, artist = song["name"], song["artist"]
-            print(f"{counter}. {name} by {artist}") 
-            counter += 1   
+            print(f"{idx+1}. {name} by {artist}") 
         print("\nWaiting for a song request...") 
+
 
     def run(self) -> None:
         """Main loop, starts the jukebox."""
