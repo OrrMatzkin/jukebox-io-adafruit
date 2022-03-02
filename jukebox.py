@@ -118,8 +118,13 @@ class Jukebox:
 
 
     def delete_msg(self, num_of_line: int) -> None:
+        """Deletes the last lines printed.
+        Args:
+            num_of_lines (int): number of lines to delete.
+        """
         for _ in range(num_of_line):
             print("\033[A{}\033[A".format(' '*80))  
+
 
     def display_available_songs(self) -> None:
         self.delete_msg(1)
