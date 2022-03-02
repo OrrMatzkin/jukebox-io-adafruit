@@ -28,8 +28,7 @@ JUKEBOX_OPENING = """Google Assistant Commands:
 class Jukebox:
 
     def __init__(self, songs_data: str) -> None:
-        """
-        Initializing a jukebox.
+        """ Initializing a jukebox.
         Args: 
             songs_data (str): The json file songs data.
         """
@@ -57,9 +56,9 @@ class Jukebox:
         print(JUKEBOX_BANNER)
         print(JUKEBOX_OPENING + '\n')
         
+
     def play_video(self, song_request: str) -> None:
-        """
-        Tries to play the requested song.
+        """Tries to play the requested song.
         Args:
             song (str): song request.   
         """
@@ -75,10 +74,9 @@ class Jukebox:
             self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path']))
             self.media_player.play()
            
+
     def stop_video(self) -> None:
-        """
-        Stops the current music video.
-        """
+        """Stops the current music video."""
         self.display_msg("Music stopped, please make a new reqest...")    
         self.current_song = None
         self.is_playing = False
@@ -87,23 +85,22 @@ class Jukebox:
 
     def find_best_match(self, request: str) -> List[str]:
         """Finds the best match of all song.
-
+        Each available song gets a score by number of matches with request / total matches.
         Args:
-            request (str)): song request. 
-
+            request (str): song request. 
         Returns:
             List[str]: returns the best scored matched song, if none found returns None;    
         """
-        best_score = 0
-        best_match = None
+        best_match = (None, 0)  # best_match = (song, score)
         request_list = {s.lower() for s in request.split()}
         for song in self.songs_by_name.values():
             num_of_mathces = len(request_list.intersection(song["matches"]))
             score = num_of_mathces / len(song["matches"])
-            if score > best_score:
-                best_score = score
-                best_match = song
-        return best_match
+            if score > best_match[1]:
+                best_match[0] = song
+                best_match[1] = score
+        return best_match[0]
+
 
     def display_msg(self, msg: str) -> None:
         if  msg != self.current_msg:
