@@ -74,15 +74,16 @@ class Jukebox:
             self.display_msg(f"playing {self.current_song['name']} by {self.current_song['artist']}")
             self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path']))
             self.media_player.play()
-        
-        
+           
     def stop_video(self) -> None:
-        """Stops the current music video, (if there is non playing does nothing).
         """
-        self.display_msg("Music stoped, please make a new reqest...")    
+        Stops the current music video.
+        """
+        self.display_msg("Music stopped, please make a new reqest...")    
         self.current_song = None
-        self.media_player.stop()
         self.is_playing = False
+        self.media_player.stop()
+
 
     def find_best_match(self, request: str) -> List[str]:
         """Finds the best match of all song.
