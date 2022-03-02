@@ -6,6 +6,7 @@ import vlc
 import json
 import time
 from Adafruit_IO import MQTTClient, Client, Feed, RequestError
+import subprocess
 
 
 ADAFRUIT_IO_KEY = "<YOUR ADAFRUIT IO KEY>"
@@ -21,6 +22,12 @@ JUKEBOX_BANNER = """
                                                               /~~\|      /~~\|
                                                               \__/       \__/ 
                                                                           """
+
+JUKEBOX_OPENING = """A modern partially automated music-playing device activted by Google Assistant.
+To active the jukebox just say to your google assiatnt: "Jukebox, play XXXX".
+To stop the music say: "Jukebox, stop music".
+For browsing the available songs say: "Jukebox, display songs"."""
+                                                     
 
 class Jukebox:
 
@@ -44,8 +51,12 @@ class Jukebox:
         self.feed = self.aio.feeds(AIO_FEED_ID)
 
         self.is_playing = False
+        self.msg_displayed = ""
+
+        print(JUKEBOX_BANNER)
+        print("a")
         
-    def play_video(self, song_reqest: str) -> None:
+    def play_video(self, song_request: str) -> None:
         """Playes the given song.
 
         Args:
@@ -54,12 +65,12 @@ class Jukebox:
         Returns:
             bool: True if jukebox is playing the song successfully, else False.    
         """
-        song = self.find_best_match(song_reqest)
+        song = self.find_best_match(song_request)
         if song is None:
-            print("song not found!")
+             self.display_msg("Song not found! Plase request another song...")    
         elif song is not self.current_song:    
             self.current_song = song
-            print(f"playing {self.current_song['name']}")
+            self.display_msg(f"playing {self.current_song['name']}")    
             self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path'])) 
             self.media_player.play()
             self.is_playing = True
@@ -69,54 +80,68 @@ class Jukebox:
     def stop_video(self) -> None:
         """Stops the current music video, (if there is non playing does nothing).
         """
-        print("stoping music")
+        self.display_msg("Music stoped, please make a new reqest...")    
         self.current_song = None
         self.media_player.stop()
         self.is_playing = False
 
-    def find_best_match(self, reqest: str) -> List[str]:
+    def find_best_match(self, request: str) -> List[str]:
         """Finds the best match of all song.
 
         Args:
-            reqest (str)): song reqest. 
+            request (str)): song request. 
 
         Returns:
             List[str]: returns the best scored matched song, if none found returns None;    
         """
         best_score = 0
         best_match = None
-        reqest_list = {s.lower() for s in reqest.split()}
+        request_list = {s.lower() for s in request.split()}
         for song in self.songs_by_name.values():
-            num_of_mathces = len(reqest_list.intersection(song["matches"]))
+            num_of_mathces = len(request_list.intersection(song["matches"]))
             score = num_of_mathces / len(song["matches"])
             if score > best_score:
                 best_score = score
                 best_match = song
         return best_match
 
+    def display_msg(self, msg: str) -> None:
+        if  msg != self.msg_displayed:
+            print("\033[A{}\033[A".format(' '*len(self.msg_displayed)))
+            print(msg)
+            self.msg_displayed = msg
+        
+
     def run(self) -> None:
         """Main loop, starts the jukebox."""
-        old_reqest = None
+        old_request = None
+        displayed_songs = False
         while(True):
             feed_data = self.aio.receive(self.feed.key)
-            song_reqest = feed_data.value
-            if song_reqest == "Null" and self.is_playing:
-                self.stop_video()    
-            elif song_reqest != old_reqest:
-                self.play_video(song_reqest)
-                old_reqest = song_reqest
+            song_request = feed_data.value
+            if song_request == "Null":
+                if self.is_playing:
+                    self.stop_video()  
+                else:
+                    self.display("Waiting for a song request...")    
+            elif song_request != old_request:
+                self.play_video(song_request)
+                old_request = song_request
+
+
+    def __del__(self):
+        self.media_player.release()
                 
             
-                
-                
+            
 if __name__ == "__main__":
 
     # TODO: remove key and user name getters for final commit
     ADAFRUIT_IO_KEY = sys.argv[1]
     ADAFRUIT_IO_USERNAME = sys.argv[2]    
     AIO_FEED_ID = sys.argv[3]
-    print(JUKEBOX_BANNER)
     jukebox = Jukebox("songs_data.json")
     jukebox.run()
+
 
    
