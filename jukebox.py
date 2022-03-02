@@ -58,25 +58,23 @@ class Jukebox:
         print(JUKEBOX_OPENING + '\n')
         
     def play_video(self, song_request: str) -> None:
-        """Playes the given song.
-
+        """
+        Tries to play the requested song.
         Args:
-            song (List[str]): song data. 
-
-        Returns:
-            bool: True if jukebox is playing the song successfully, else False.    
+            song (str): song request.   
         """
         song = self.find_best_match(song_request)
         if song is None:
              self.display_msg("Song not found! Plase request another song...")    
-        elif song is not self.current_song:    
+        elif song is self.current_song:
+            self.display_msg(f"{self.current_song['name']} is already playing")   
+        else:    
             self.current_song = song
-            self.display_msg(f"playing {self.current_song['name']} by {self.current_song['artist']}")    
-            self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path'])) 
-            self.media_player.play()
             self.is_playing = True
-        else:
-            print(f"{self.current_song['name']} is already playing")
+            self.display_msg(f"playing {self.current_song['name']} by {self.current_song['artist']}")
+            self.media_player.set_media(self.vlc_instance.media_new(self.current_song['path']))
+            self.media_player.play()
+        
         
     def stop_video(self) -> None:
         """Stops the current music video, (if there is non playing does nothing).
