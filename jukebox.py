@@ -103,14 +103,19 @@ class Jukebox:
 
 
     def display_msg(self, msg: str) -> None:
+        """Displayes the given message.
+        Args:
+            msg (str): the message.
+        """
         if  msg != self.current_msg:
             if self.is_available_songs_displayed:
                 self.delete_msg(len(self.songs_by_name)+3)
             else:
                 self.delete_msg(1)  
-            self.is_available_songs_displayed = False       
-            print(msg)
-            self.current_msg = msg
+            self.is_available_songs_displayed = False    
+            self.current_msg = msg   
+            print(self.current_msg)
+
 
     def delete_msg(self, num_of_line: int) -> None:
         for _ in range(num_of_line):
