@@ -137,12 +137,12 @@ class Jukebox:
 
 
     def run(self) -> None:
-        """Main loop, starts the jukebox."""
-        threading1 = threading.Thread(target=self.main_loop)
-        threading1.daemon = True
-        threading1.start()
+        """Starts the jukebox."""
+        thread = threading.Thread(target=self.main_loop)
+        thread.daemon = True
+        thread.start()
         while(True):
-            if input() == "q":
+            if input() == 'q':
                 sys.exit()
                 
 
