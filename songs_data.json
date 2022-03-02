@@ -12,5 +12,33 @@
         "artist": "Roy Orbison",
         "path": "/home/pi/jukebox-io-adafruit/songs/Roy Orbison - You Got It.mov",
         "matches": ["you", "got", "it", "roy", "orbison"]
+    },
+    {
+        "id": 2,
+        "name": "Space Oddity",
+        "artist": "David Bowie",
+        "path": "/home/pi/jukebox-io-adafruit/songs/David Bowie - Space Oddity.mp4",
+        "matches": ["space", "oddity", "davidt", "bowie"]
+    },
+    {
+        "id": 3,
+        "name": "What a Wonderful World",
+        "artist": "Louis Armstrong",
+        "path": "/home/pi/jukebox-io-adafruit/songs/Louis Armstrong - What a Wonderful World.mp4",
+        "matches": ["what", "a", "wonderful", "world", "louis", "armstrong"]
+    },
+    {
+        "id": 4,
+        "name": "Aint No Mountain High Enough",
+        "artist": "Marvin Gaye & Tammi Terrell",
+        "path": "/home/pi/jukebox-io-adafruit/songs/Marvin Gaye Tammi Terrell - Aint No Mountain High Enough.mp4",
+        "matches": ["aint", "no", "mountain", "high", "enough","marvin","gaye","tammi","terrell"]
+    },
+    {
+        "id": 5,
+        "name": "Wonderwall",
+        "artist": "Oasis",
+        "path": "/home/pi/jukebox-io-adafruit/songs/Oasis - Wonderwall.mp4",
+        "matches": ["wonderwall", "oasis"]
     }
 ]
