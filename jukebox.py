@@ -63,10 +63,13 @@ class Jukebox:
             song (str): song request.   
         """
         song = self.find_best_match(song_request)
+        # match not found
         if song is None:
-             self.display_msg("Song not found! Plase request another song...")    
+             self.display_msg("Song not found! Plase request another song...")   
+        # song is alredy playing 
         elif song is self.current_song:
             self.display_msg(f"{self.current_song['name']} is already playing")   
+        # play matched song    
         else:    
             self.current_song = song
             self.is_playing = True
@@ -147,30 +150,36 @@ class Jukebox:
                 
 
     def main_loop(self):
-        """Main loop, starts the jukebox."""
+        """Main loop.
+        This method runs in the background ask checks changing in the adafruit io feed,
+        triggred by a voice command. 
+        """
         old_request = None
         while(True):
             feed_data = self.aio.receive(self.feed.key)
             song_request = feed_data.value
-            if not self.is_available_songs_displayed and song_request == "@display_songs":
+            # disply available songs
+            if song_request == "@display_songs" and not self.is_available_songs_displayed:
                 if self.is_playing:
-                        self.stop_video()  
+                     self.stop_video()
                 self.display_available_songs()
                 self.is_available_songs_displayed = True
+            # stop video song
             elif song_request == "Null":
-                if self.is_playing:
+                if self.is_playing: 
                     self.stop_video()  
                 else:
-                    self.display_msg("Waiting for a song request...")    
+                     self.display_msg("Waiting for a song request...")    
+            # play video song    
             elif song_request != "@display_songs" and song_request != old_request:
                 self.play_video(song_request)
                 old_request = song_request
 
 
     def __del__(self):
+        """Releases the media player instace when the jukebox is destoyed."""
         self.media_player.release()
-                
-            
+                         
             
 if __name__ == "__main__":
 
@@ -178,6 +187,7 @@ if __name__ == "__main__":
     ADAFRUIT_IO_KEY = sys.argv[1]
     ADAFRUIT_IO_USERNAME = sys.argv[2]    
     AIO_FEED_ID = sys.argv[3]
+
     jukebox = Jukebox("songs_data.json")
     jukebox.run()
 
