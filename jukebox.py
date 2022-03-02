@@ -1,61 +1,59 @@
 import sys
-from typing import List
 import vlc
 import json
-from Adafruit_IO import Client
 import threading
-
-
+from typing import List
+from Adafruit_IO import Client
 
 ADAFRUIT_IO_KEY = "<YOUR ADAFRUIT IO KEY>"
 ADAFRUIT_IO_USERNAME = "<YOUR ADAFRUIT IO USERNAME>"
 AIO_FEED_ID = "playing-song"
+
 JUKEBOX_BANNER = """     
        ██╗██╗   ██╗██╗  ██╗███████╗██████╗  ██████╗ ██╗  ██╗       
        ██║██║   ██║██║ ██╔╝██╔════╝██╔══██╗██╔═══██╗╚██╗██╔╝       
        ██║██║   ██║█████╔╝ █████╗  ██████╔╝██║   ██║ ╚███╔╝          
-  ██   ██║██║   ██║██╔═██╗ ██╔══╝  ██╔══██╗██║   ██║ ██╔██╗       |~~~~~~~~~~|
-  ╚█████╔╝╚██████╔╝██║  ██╗███████╗██████╔╝╚██████╔╝██╔╝ ██╗      |~~~~~~~~~~|
-   ╚═Orr Matzkin═╝ ╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝      |          |
-                                                              /~~\|      /~~\|
-   A modern partially automated music-playing device          \__/       \__/ 
-   activted by Google Assistant.                                           
-
-"""
-
+  ██   ██║██║   ██║██╔═██╗ ██╔══╝  ██╔══██╗██║   ██║ ██╔██╗       |~~~~~~~~~|
+  ╚█████╔╝╚██████╔╝██║  ██╗███████╗██████╔╝╚██████╔╝██╔╝ ██╗      |~~~~~~~~~|
+   ╚═Orr Matzkin═╝ ╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝      |         |
+                                                              /~~\|     /~~\|
+   A modern partially automated music-playing device          \__/      \__/ 
+   activted by Google Assistant.\n\n"""
 JUKEBOX_OPENING = """Google Assistant Commands:
 - To play a song say: "Jukebox, play XXXX".
 - To stop the music say: "Jukebox, stop music".
 - To display all available songs say: "Jukebox, display songs".
 (To exit enter: 'q').\n"""
                                                      
-
 class Jukebox:
 
-    current_song = None
-
     def __init__(self, songs_data: str) -> None:
-        """Loads the json songs data file and creates a vlc and media player instances.
-        
+        """
+        Initializing a jukebox.
         Args: 
             songs_data (str): The json file songs data.
         """
+        # loading json file
         with open(songs_data, 'r') as f:
             songs = json.load(f)
         self.songs_by_name = dict([(s['name'], s) for s in songs])   
 
+        # creating the media player
         self.vlc_instance = vlc.Instance('--quiet')
         self.media_player = self.vlc_instance.media_player_new()  
         self.media_player.toggle_fullscreen()
-
+        
+        # setting defualt config for adafruit io   
         self.aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
         self.feed = self.aio.feeds(AIO_FEED_ID)
         self.aio.send_data(self.feed.key, "Null")
 
+        # setting defualt class variables
+        self.current_song = None
         self.is_playing = False
-        self.displayed_songs = False
-        self.msg_displayed = ""
-
+        self.is_available_songs_displayed = False
+        self.current_msg = ""
+        
         print(JUKEBOX_BANNER)
         print(JUKEBOX_OPENING + '\n')
         
@@ -109,14 +107,14 @@ class Jukebox:
         return best_match
 
     def display_msg(self, msg: str) -> None:
-        if  msg != self.msg_displayed:
-            if self.displayed_songs:
+        if  msg != self.current_msg:
+            if self.is_available_songs_displayed:
                 self.delete_msg(len(self.songs_by_name)+3)
             else:
                 self.delete_msg(1)  
-            self.displayed_songs = False       
+            self.is_available_songs_displayed = False       
             print(msg)
-            self.msg_displayed = msg
+            self.current_msg = msg
 
     def delete_msg(self, num_of_line: int) -> None:
         for _ in range(num_of_line):
@@ -148,11 +146,11 @@ class Jukebox:
         while(True):
             feed_data = self.aio.receive(self.feed.key)
             song_request = feed_data.value
-            if not self.displayed_songs and song_request == "@display_songs":
+            if not self.is_available_songs_displayed and song_request == "@display_songs":
                 if self.is_playing:
                         self.stop_video()  
                 self.display_available_songs()
-                self.displayed_songs = True
+                self.is_available_songs_displayed = True
             elif song_request == "Null":
                 if self.is_playing:
                     self.stop_video()  
