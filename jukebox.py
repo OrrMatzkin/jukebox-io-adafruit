@@ -7,7 +7,7 @@ from Adafruit_IO import Client
 
 ADAFRUIT_IO_KEY = "<YOUR ADAFRUIT IO KEY>"
 ADAFRUIT_IO_USERNAME = "<YOUR ADAFRUIT IO USERNAME>"
-AIO_FEED_ID = "playing-song"
+AIO_FEED_ID = "<YOUR FEED NAME>"
 
 JUKEBOX_BANNER = """     
        ██╗██╗   ██╗██╗  ██╗███████╗██████╗  ██████╗ ██╗  ██╗       
@@ -17,7 +17,7 @@ JUKEBOX_BANNER = """
   ╚█████╔╝╚██████╔╝██║  ██╗███████╗██████╔╝╚██████╔╝██╔╝ ██╗      |~~~~~~~~~|
    ╚═Orr Matzkin═╝ ╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝      |         |
                                                               /~~\|     /~~\|
-   A modern partially automated music-playing device          \__/      \__/ 
+   A modern partially automated music-playing program         \__/      \__/ 
    activted by Google Assistant.\n\n"""
 JUKEBOX_OPENING = """Google Assistant Commands:
 - To play a song say: "Jukebox, play XXXX".
@@ -94,15 +94,17 @@ class Jukebox:
         Returns:
             List[str]: returns the best scored matched song, if none found returns None;    
         """
-        best_match = (None, 0)  # best_match = (song, score)
+        # best_match = (None, 0)  # best_match = (song, score
+        best_song = None
+        best_score = 0
         request_list = {s.lower() for s in request.split()}
         for song in self.songs_by_name.values():
             num_of_mathces = len(request_list.intersection(song["matches"]))
             score = num_of_mathces / len(song["matches"])
-            if score > best_match[1]:
-                best_match[0] = song
-                best_match[1] = score
-        return best_match[0]
+            if score > best_score:
+                best_song= song
+                best_score = score
+        return best_song
 
 
     def display_msg(self, msg: str) -> None:
@@ -180,16 +182,19 @@ class Jukebox:
         """Releases the media player instace when the jukebox is destoyed."""
         self.media_player.release()
                          
-            
+        
 if __name__ == "__main__":
 
-    # TODO: remove key and user name getters for final commit
-    ADAFRUIT_IO_KEY = sys.argv[1]
-    ADAFRUIT_IO_USERNAME = sys.argv[2]    
-    AIO_FEED_ID = sys.argv[3]
+    # Configures your private Adafruit details
+    with open("adafruit_config.json", 'r') as f:
+            config = json.load(f)       
+            ADAFRUIT_IO_KEY = config["ADAFRUIT_IO_KEY"]
+            ADAFRUIT_IO_USERNAME = config["ADAFRUIT_IO_USERNAME"] 
+            AIO_FEED_ID = config["AIO_FEED_ID"] 
 
     jukebox = Jukebox("songs_data.json")
     jukebox.run()
 
 
    
+
