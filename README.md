@@ -1,15 +1,19 @@
 <!-- PROJECT LOGO (light) -->
-<br />
-<div align="center">
+![GitHub-Mark-Light](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only)
+
+![GitHub-Mark-Dark](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only)
+
+ <br />
+<!-- <div align="center">
   <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
     <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only" alt="Logo" >
-  </a>
+  </a> -->
 
 <!-- PROJECT LOGO (dark) -->
 <div align="center">
-  <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
+  <!-- <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
     <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only" alt="Logo" >
-  </a>
+  </a> -->
 
   <p align="center">
     A modern partially automated music-playing program
@@ -29,6 +33,7 @@
 </div>
 
 ## About the project
+
 
 jukebox is a CLI program for playing music videos using Google assistant command from any compatible device such Android phone, Google Home, etc.
 
