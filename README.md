@@ -1,22 +1,16 @@
 <!-- PROJECT LOGO (light) -->
 ![GitHub-Mark-Light](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only)
-![GitHub-Mark-Dark](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only)
- <br />
-<!-- <div align="center">
-  <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
-    <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only" alt="Logo" >
-  </a> -->
 
-<!-- PROJECT LOGO (dark) -->
-<!-- <div align="center"> -->
-  <!-- <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
-    <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only" alt="Logo" >
-  </a> -->
+![GitHub-Mark-Dark](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only)
+
+
+<div align="center">
+<div align="center">
 
   <p align="center">
     A modern partially automated music-playing program
     activted by Google Assistant </p>
-<!-- </div> -->
+</div>
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/navendu-pottekkat/awesome-readme?include_prereleases)
 ![GitHub last commit](https://img.shields.io/github/last-commit/orrmatzkin/jukebox-io-adafruit?color=orange)
