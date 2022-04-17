@@ -1,8 +1,6 @@
 <!-- PROJECT LOGO (light) -->
 ![GitHub-Mark-Light](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only)
-
 ![GitHub-Mark-Dark](https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only)
-
  <br />
 <!-- <div align="center">
   <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
@@ -10,7 +8,7 @@
   </a> -->
 
 <!-- PROJECT LOGO (dark) -->
-<div align="center">
+<!-- <div align="center"> -->
   <!-- <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
     <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only" alt="Logo" >
   </a> -->
@@ -18,7 +16,7 @@
   <p align="center">
     A modern partially automated music-playing program
     activted by Google Assistant </p>
-</div>
+<!-- </div> -->
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/navendu-pottekkat/awesome-readme?include_prereleases)
 ![GitHub last commit](https://img.shields.io/github/last-commit/orrmatzkin/jukebox-io-adafruit?color=orange)
