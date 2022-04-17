@@ -1,13 +1,14 @@
 <!-- PROJECT LOGO (light) -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only">
+  <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
+    <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-white.png?raw=true#gh-light-mode-only" alt="Logo" >
   </a>
+
 <!-- PROJECT LOGO (dark) -->
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only">
+  <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit">
+    <img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox-title-trans-black.png?raw=true#gh-dark-mode-only" alt="Logo" >
   </a>
 
   <p align="center">
@@ -23,8 +24,8 @@
 ![GitHub](https://img.shields.io/github/license/orrMatzkin/jukebox-io-adafruit)
 
 <a href="https://github.com/github_username/repo_name">View Demo</a> ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a> ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit/issues">Report Bug</a> ·
+    <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit/issues">Request Feature</a>
 </div>
 
 ## About the project
