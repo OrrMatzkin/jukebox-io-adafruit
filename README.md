@@ -42,11 +42,9 @@ You can see the full article about this project on ..[fill missing]!
     - [Run Locally](#run-locally)   
 - [Features](#features)        
 - [Adding new Music Videos](#adding-new-music-videos)    
-- [Copyright](#copyright)       
- 
+       
 
 ## Demo
-
 
 
 
@@ -110,7 +108,6 @@ Again, to see an exaple check this article -> [fill missign].
    ```
 4. Make sure your device (Raspberry pi) is connected to a monitor and a set of speakers.
 
-<p align="right">(<a href="#table-of-context">back to top</a>)</p>
 
 ### Run Locally
 
@@ -125,6 +122,8 @@ Start the the program
 ```bash
  python3 jukebox.py
 ```
+
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 ## Features
 
@@ -141,6 +140,8 @@ Start the the program
 
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 ## Adding new Music Videos
 
@@ -169,10 +170,11 @@ To add a new song follow this steps:
     }
    ```
 
-
 \* VLC supports: ASF, AVI, FLAC, FLV, Fraps, Matroska, MP4, MPJPEG, MPEG-2 (ES, MP3), Ogg, PS, PVA, QuickTime File Format, TS, WAV, WebM
 
 \*\* The Matches field is how a song is picked after a voice command. For an example check the given `songs_data.json` file
+
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 ## Copyright
 
