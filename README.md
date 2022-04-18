@@ -46,6 +46,7 @@ You can see the full article about this project on ..[fill missing]!
 
 ## Demo
 
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 
 ## Requirements
@@ -60,6 +61,7 @@ jukebox requires the followin to run:
 - IFTT Account
 - Google Assistance (Any access)
 
+<p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
 ## Getting Started
 
