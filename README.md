@@ -33,6 +33,17 @@ I originally design and wrote this program for playing songs on my grandfather o
 
 You can see the full article about this project on ..[fill missing]! 
 
+## Table of context
+- [Demo](#demo)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Run Locally](#run-locally)   
+- [Features](#features)        
+- [Adding new Music Videos](#adding-new-music-videos)         
+ 
+
 ## Demo
 
 
@@ -130,4 +141,36 @@ Start the the program
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
+## Adding new Music Videos
 
+This Repo comes with 6 (great) song:
+
+1. David Bowie - Space Oddity.mp4
+2. Louis Armstrong - What a Wonderful World.mp4
+3. Marvin Gaye Tammi Terrell - Aint No Mountain High Enough.mp4
+4. Oasis - Wonderwall.mp4
+5. Roy Orbison - You Got It.mov
+6. The Police - Every Breath You Take.mp4
+
+To add a new song follow this steps:
+
+1. Download your favorite music video. *
+2. Rename the file to "\<Artist Name\> - \<Song Name\>.\<FIle Format\>" (see exmaple above).
+4. Move the file to the `songs` directory.
+3. Add the song details in `songs_data.json`
+   ```json
+   {
+        "id": 0,
+        "name": "<Song Name>",
+        "artist": "<Artist Name>",
+        "path": "<Path to song fille>",
+        "matches": ["<match1>", "<match2>", "<match3>", "<match4>",...]
+    }
+   ```
+
+
+\* VLC supports: ASF, AVI, FLAC, FLV, Fraps, Matroska, MP4, MPJPEG, MPEG-2 (ES, MP3), Ogg, PS, PVA, QuickTime File Format, TS, WAV, WebM
+
+\*\* The Matches field is how a song is picked after a voice command. For an example check the given `songs_data.json` file
+
+Copyright (c) 2022 OrrMatzkin
