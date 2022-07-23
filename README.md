@@ -45,11 +45,11 @@ You can see the full article about this project on ..[fill missing]!
        
 
 ## Demo
- <iframe width="560" height="315"
-src="https://www.youtube.com/watch?v=LN7XRFX31c0" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+<div align="center">
+<img src="https://github.com/OrrMatzkin/jukebox-io-adafruit/blob/main/readme_assets/jukebox_demo.gif?raw=true" alt="random_forest_error" width="800"/>
+</div>
+
+For a full demo video check this [link](https://www.youtube.com/watch?v=LN7XRFX31c0).
 
 <p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
