@@ -19,7 +19,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/orrmatzkin/jukebox-io-adafruit)
 ![GitHub](https://img.shields.io/github/license/orrMatzkin/jukebox-io-adafruit)
 
-<a href="https://github.com/github_username/repo_name">View Demo</a> ·
+<a href="https://www.youtube.com/watch?v=LN7XRFX31c0">View Demo</a> ·
     <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit/issues">Report Bug</a> ·
     <a href="https://github.com/OrrMatzkin/jukebox-io-adafruit/issues">Request Feature</a>
 </div>
@@ -45,6 +45,7 @@ You can see the full article about this project on ..[fill missing]!
        
 
 ## Demo
+[![Everything Is AWESOME](https://lh3.googleusercontent.com/4v7ch66v8BYeY9QYbfLwJ648DvfjNm6FOjuk1HPm8bd9lTP-885J3Cgfv8h7xZSAud8GWwcwB4UFyNd899XLb1-Ag-oHQnksk-zGRIrBBUKQErbibalEW-u0aO1bdL-66OuL5sLLh4fLJWn2bwq_MURTPeYovAUIc4evotGOTOKaFhRt9rBUzaxywrPSINR-Z7wGMRytZs6BB_kL4S0XCayqUxkZ1WIfpYrWz2TfnPwS0paVsme8gq-6vB0beIg1zsh0M_7H4JZZt0phci9ASnuYa_qxC7CjyFLbx5Ljqpz0DUe3j_FwZooFhp9-9stT2QC4HwOgastcZWFcgjzUb6hk4M1SVVDST7X48PU24j61xQL8lDxdyy28DFuDcusnbJAM0_bumlxM2bGKrCRF4FJv4c2lE2VM9-UhmVq4u5A9lSoLF51cvPPliMruSXO_FcySasmECxEg92Q0_x5d2PqF3NClxGy8nPI5DymCua5ZrDWv7i6JuDSkMhU82F4UTGIUfHV4EbEkiTJPnqR5K5hxUYzZxmMtiMtY41giUQ6nmnb4kEzmWbKRX47mwnftllfhPxpLehnBzhhi_9Ugm-mTwARjQi7BGFmUIlI4LzgKHevNtB5tihDWw5QuISlLT7by-aqpu5JoMl4fq3ounHfe9SMst8eJI4OxCjYORvsn0eWErvNUSGXnMT92ElFNiC2jNeV_y3eHU8CEblw39NZKUymHF1jtGAnbbHE6kUvx7wkZzDAJFO2-rxBvLqRTKJKHeZ8iL0WkDkQWE1SW8srQSL2TTfYQTw=w2308-h1730-no?authuser=0)](https://www.youtube.com/watch?v=LN7XRFX31c0 "JUKEBOX DEMO")
 
 <p align="right">(<a href="#about-the-project">back to top</a>)</p>
 
